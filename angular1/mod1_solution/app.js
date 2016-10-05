@@ -2,20 +2,34 @@
 'use strict';
 
 angular.module('LunchCheck', [])
-.controller('LunCheckController', LunchCheckController);
+.controller('LunchCheckController', LunchCheckController);
 
 LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope) {
-  $scope.name = "Yaakov";
-  $scope.stateOfBeing = "hungry";
+  
+  $scope.lunchString = "";
 
-  $scope.sayMessage = function () {
-    return "Yaakov likes to eat healthy snacks at night!";
+  $scope.howMuch = function () {
+    var text = "";
+  	if ($scope.lunchString.length == 0) {
+  		text = "Please enter data first";
+  	} else {
+  	   var count = $scope.lunchString.split(",").filter(ne).length;
+       if (count > 3) {
+      	text = "Too much!";
+       } else if (count >0) {
+    	text = "Enjoy!";
+       } else {
+    	text = "Empty list";
+       }
+   }
+    return text;
   };
 
-  $scope.feedYaakov = function () {
-    $scope.stateOfBeing = "fed";
-  };
-}
+ function ne(item) {
+    return item.trim().length > 0 ;
+ }
+
+} 
 
 })();
