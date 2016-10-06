@@ -8,6 +8,7 @@ LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope) {
   
   $scope.lunchString = "";
+  $scope.lastCalc = "";
 
   $scope.howMuch = function () {
     var text = "";
@@ -23,6 +24,7 @@ function LunchCheckController($scope) {
     	text = "Empty list";
        }
    }
+    $scope.lastCalc = text
     return text;
   };
 
